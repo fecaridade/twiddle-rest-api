@@ -1,0 +1,54 @@
+version: '3'
+services:
+  django:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    command: bash -c "pip install -r requirements.txt && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/srv/app
+      - static_volume:/srv/app/staticfiles
+      - media_volume:/srv/app/mediafiles
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - twiddle-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    networks:
+      - twiddle-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 8080:80
+    depends_on:
+      - postgres
+    networks:
+      - twiddle-network
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
+
+networks:
+  twiddle-network:
+    driver: bridge
