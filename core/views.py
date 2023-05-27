@@ -131,7 +131,7 @@ class ProfilePostView(APIView):
     Mostra os posts de um perfil específico.
 
     Método: GET
-    Endpoint: /profiles/<int:pk>/posts/
+    Endpoint: /profiles/<int:pk>
     Parâmetros de URL: pk (ID do perfil)
     Retorno: Retorna os posts do perfil especificado.
 
@@ -194,7 +194,13 @@ class PostCreateView(APIView):
 
 
 class ProfilePhotoUploadView(APIView):
-    #parser_classes = [FileUploadParser,MultiPartParser]
+    '''
+    Cria um novo post.
+
+    Método: POST
+    Endpoint: /profile/upload-photo
+    Retorno: Retorna os detalhes do post recém-criado.
+    '''
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 

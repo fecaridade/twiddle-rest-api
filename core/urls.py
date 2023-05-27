@@ -11,5 +11,5 @@ urlpatterns = [
     path('profile/upload-photo', ProfilePhotoUploadView.as_view(), name='profile-upload-photo'),
     path('posts/list', PostListView.as_view(), name='posts-list'),
     path('posts/create', PostCreateView.as_view(), name='posts-create'),
-    path('posts/recommended_posts', RecommendedPostView.as_view(), name='posts-recommeded-create')
+    path('posts/recommended_posts', RecommendedPostView.as_view(), name='posts-recommended-create')
 ]
