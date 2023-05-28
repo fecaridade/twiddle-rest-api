@@ -177,6 +177,7 @@ class PostCreateView(APIView):
 
     Método: POST
     Endpoint: /posts/
+    Parâmetros de URL: title (Título da publicação) e post(Conteúdo da publicação )
     Retorno: Retorna os detalhes do post recém-criado.
     '''
 
