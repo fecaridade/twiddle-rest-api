@@ -15,7 +15,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['username','followers','profile_photo']
+        fields = ['id','username','followers','profile_photo']
 
 
 class PostSerializer(serializers.ModelSerializer):
