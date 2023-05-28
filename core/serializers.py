@@ -21,7 +21,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Posts
-        fields = ['tittle','post','created']
+        fields = ['title','post','created']
 
 class ProfilePhotoSerializer(serializers.Serializer):
     profile_photo = serializers.ImageField()
